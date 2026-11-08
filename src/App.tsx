@@ -1,40 +1,46 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Terminal } from 'lucide-react';
-import DesignSystemShowcase from './pages/DesignSystemShowcase';
+import PageShell from './components/layout/PageShell';
+import ScrollToTop from './components/layout/ScrollToTop';
+import SuspenseFallback from './components/layout/SuspenseFallback';
+
+// Lazy-loaded route components
+const HomePage = lazy(() => import('./pages/HomePage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const SkillsPage = lazy(() => import('./pages/SkillsPage'));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
+const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage'));
+const ExperiencePage = lazy(() => import('./pages/ExperiencePage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+
+// TEMPORARY: Design system preview route from Phase 2. Removed in Phase 8.
+const DesignSystemShowcase = lazy(() => import('./pages/DesignSystemShowcase'));
 
 export const App: React.FC = () => {
   return (
-    <div className="relative min-h-screen text-text-primary">
-      {/* Fixed Full-Screen Atmospheric Background */}
-      <div className="cinematic-bg" aria-hidden="true">
-        <div className="cinematic-bg-overlay" />
-      </div>
+    <>
+      <ScrollToTop />
+      <PageShell>
+        <Suspense fallback={<SuspenseFallback />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/skills" element={<SkillsPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+            <Route path="/experience" element={<ExperiencePage />} />
+            <Route path="/contact" element={<ContactPage />} />
 
-      <Routes>
-        {/* Foundation Placeholder Route */}
-        <Route
-          path="/"
-          element={
-            <main className="min-h-screen flex items-center justify-center p-6">
-              <div className="flex items-center gap-3 rounded-card border border-brand-cyan/20 bg-brand-card/50 p-6 backdrop-blur-md shadow-glow-cyan-sm">
-                <Terminal className="h-6 w-6 text-brand-cyan" />
-                <h1 className="font-heading text-xl font-bold tracking-tight text-text-primary">
-                  Ashlin Siddharth — Foundation Ready
-                </h1>
-              </div>
-            </main>
-          }
-        />
+            {/* TEMPORARY: Unlinked design system verification showcase */}
+            <Route path="/design" element={<DesignSystemShowcase />} />
 
-        {/* ======================================================================
-            TEMPORARY ROUTE: /design
-            Used exclusively for Phase 2 design system and token verification.
-            This route is NOT linked in any navigation and will be removed in Phase 8.
-            ====================================================================== */}
-        <Route path="/design" element={<DesignSystemShowcase />} />
-      </Routes>
-    </div>
+            {/* Catch-all 404 Route */}
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+      </PageShell>
+    </>
   );
 };
 

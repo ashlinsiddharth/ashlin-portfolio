@@ -8,6 +8,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   to?: string;
+  target?: string;
+  rel?: string;
   children: React.ReactNode;
   className?: string;
 }
@@ -17,6 +19,8 @@ export const Button: React.FC<ButtonProps> = ({
   size = 'md',
   href,
   to,
+  target,
+  rel,
   children,
   className,
   disabled,
@@ -53,7 +57,13 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-      <a href={href} className={combinedClasses} aria-disabled={disabled}>
+      <a
+        href={href}
+        target={target}
+        rel={rel}
+        className={combinedClasses}
+        aria-disabled={disabled}
+      >
         {children}
       </a>
     );
