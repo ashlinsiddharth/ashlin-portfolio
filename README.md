@@ -36,7 +36,7 @@ A professional personal portfolio website showcasing the profile, technical capa
 ---
 
 ## Installation Instructions
-22
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/ashlinsiddharth/ashlin-portfolio.git
