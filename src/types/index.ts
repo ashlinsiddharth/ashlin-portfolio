@@ -1,0 +1,43 @@
+/**
+ * Confirmed skill categories (exact union of approved categories).
+ * Do not add, rename, or assume categories without owner approval.
+ */
+export type SkillCategory =
+  | 'Languages'
+  | 'Frontend'
+  | 'Backend'
+  | 'AI / Data Science'
+  | 'Tools & Platforms';
+
+export interface Skill {
+  name: string;
+  category: SkillCategory;
+}
+
+export type InterestIcon = 'Globe' | 'BrainCircuit' | 'Database' | 'Server' | 'Layout';
+
+export interface Interest {
+  title: string;
+  icon: InterestIcon;
+}
+
+export interface Education {
+  degree: string;
+  institution: string;
+  location: string;
+  graduationYear: string;
+}
+
+export interface AboutData {
+  introduction: string; // [OWNER TO CONFIRM]
+  background: string;   // [OWNER TO CONFIRM]
+  careerGoal: string;   // [OWNER TO CONFIRM]
+  education: Education; // Confirmed facts
+  interests: Interest[];// [OWNER TO CONFIRM]
+}
+
+export interface SkillsData {
+  introduction: string; // [OWNER TO CONFIRM]
+  skills: Skill[];      // Confirmed list
+}
+
