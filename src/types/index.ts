@@ -41,3 +41,26 @@ export interface SkillsData {
   skills: Skill[];      // Confirmed list
 }
 
+/**
+ * Project definitions for Phase 6 (Projects & Project Details)
+ */
+export type ProjectStatus = 'completed' | 'in-progress' | 'planned';
+
+export interface ProjectLinks {
+  live?: string;
+  repo?: string;
+}
+
+export interface Project {
+  slug: string;
+  title: string;
+  summary: string;
+  status: ProjectStatus;
+  role?: string;
+  overview?: string;
+  features?: string[];
+  stack: string[];
+  tags: string[];
+  image?: string;
+  links: ProjectLinks;
+}
