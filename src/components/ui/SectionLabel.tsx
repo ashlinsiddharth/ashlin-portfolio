@@ -2,11 +2,19 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
 export interface SectionLabelProps extends React.HTMLAttributes<HTMLDivElement> {
-  label: string;
+  label?: string;
+  text?: string;
   className?: string;
 }
 
-export const SectionLabel: React.FC<SectionLabelProps> = ({ label, className, ...props }) => {
+export const SectionLabel: React.FC<SectionLabelProps> = ({
+  label,
+  text,
+  className,
+  ...props
+}) => {
+  const displayText = label ?? text ?? '';
+
   return (
     <div
       className={twMerge(
@@ -16,7 +24,7 @@ export const SectionLabel: React.FC<SectionLabelProps> = ({ label, className, ..
       {...props}
     >
       <span className="h-0.5 w-3 rounded-full bg-brand-cyan" aria-hidden="true" />
-      <span>{label}</span>
+      <span>{displayText}</span>
     </div>
   );
 };

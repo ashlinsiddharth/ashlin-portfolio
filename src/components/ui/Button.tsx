@@ -10,6 +10,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   to?: string;
   target?: string;
   rel?: string;
+  download?: string | boolean;
   children: React.ReactNode;
   className?: string;
 }
@@ -21,6 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
   to,
   target,
   rel,
+  download,
   children,
   className,
   disabled,
@@ -61,6 +63,7 @@ export const Button: React.FC<ButtonProps> = ({
         href={href}
         target={target}
         rel={rel}
+        download={download}
         className={combinedClasses}
         aria-disabled={disabled}
       >

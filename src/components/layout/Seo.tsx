@@ -10,8 +10,10 @@ const DEFAULT_DESCRIPTION =
 
 export const Seo: React.FC<SeoProps> = ({ title, description = DEFAULT_DESCRIPTION }) => {
   useEffect(() => {
-    // Set document title in format: "Page | Ashlin Siddharth"
-    document.title = `${title} | Ashlin Siddharth`;
+    // Set document title cleanly, avoiding duplicate name suffix if already included
+    document.title = title.includes('Ashlin Siddharth')
+      ? title
+      : `${title} | Ashlin Siddharth`;
 
     // Set or create meta description
     let metaDescription = document.querySelector('meta[name="description"]');
