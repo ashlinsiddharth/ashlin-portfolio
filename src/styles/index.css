@@ -1,18 +1,105 @@
-@import '@fontsource/space-grotesk/500.css';
+/* ==========================================================================
+   ASHILIN SIDDHARTH PORTFOLIO — DESIGN SYSTEM STYLES
+   Phase 2: Midnight Blue Cinematic Design System
+   ========================================================================== */
+
+/* 1. Typography Imports (Optimized Weights) */
+@import '@fontsource/space-grotesk/600.css';
 @import '@fontsource/space-grotesk/700.css';
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
 @import '@fontsource/jetbrains-mono/500.css';
 
+/* 2. Tailwind Core Layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* 3. Base Styles & Typography */
 @layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
   body {
-    @apply bg-brand-dark text-text-primary font-sans antialiased;
+    @apply bg-brand-dark text-text-primary font-sans antialiased selection:bg-brand-cyan/20 selection:text-brand-cyan;
     min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight text-text-primary;
+  }
+
+  p {
+    @apply text-text-muted leading-relaxed font-sans;
+  }
+
+  code, pre, kbd {
+    @apply font-mono;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #00D4FF;
+    outline-offset: 2px;
   }
 }
 
+/* ==========================================================================
+   4. BACKGROUND ARCHITECTURE & SLOT FOR src/assets/background.webp
+   The site uses a fixed full-screen midnight-blue atmospheric gradient
+   with a dark vignette overlay.
+   SLOT SPECIFICATION:
+   When 'src/assets/background.webp' is supplied by the owner, set:
+   --bg-slot-image: url('../assets/background.webp');
+   The layout is fully verified and visually complete without an image.
+   ========================================================================== */
+:root {
+  --bg-slot-image: none;
+}
+
+.cinematic-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  pointer-events: none;
+  background-color: #0A192F;
+  background-image: 
+    var(--bg-slot-image),
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(0, 212, 255, 0.12), transparent 70%),
+    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.14), transparent 45%),
+    linear-gradient(to bottom, #0A192F 0%, #06101E 100%);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+.cinematic-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(5, 13, 26, 0.75) 100%);
+}
+
+/* ==========================================================================
+   5. ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   Suppresses non-essential transitions and animations when user requests
+   reduced motion in system preferences.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
