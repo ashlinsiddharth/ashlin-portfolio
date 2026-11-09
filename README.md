@@ -43,9 +43,9 @@ A professional personal portfolio website showcasing the profile, technical capa
    cd ashlin-portfolio
    ```
 
-2. Check out the development branch:
+2. Check out the main branch:
    ```bash
-   git checkout phase-1-foundation
+   git checkout main
    ```
 
 3. Install project dependencies:
@@ -86,6 +86,22 @@ To run ESLint across all TypeScript and React files:
 ```bash
 npm run lint
 ```
+
+---
+
+## Environment Variables
+
+Copy `.env.example` to `.env.local` for local development:
+```bash
+cp .env.example .env.local
+```
+
+Available configuration variables:
+- `VITE_APP_TITLE`: Application document title prefix.
+- `VITE_APP_URL`: Canonical production or preview URL for the application.
+- `VITE_CONTACT_FORM_ENDPOINT`: (Optional) Form endpoint for contact submissions when using external providers.
+
+> **Security Note:** Never commit `.env` or `.env.local` to source control. The project `.gitignore` automatically excludes all environment files.
 
 ---
 
