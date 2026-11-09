@@ -21,13 +21,12 @@ export interface ProfileData {
   // Confirmed facts
   name: string;
   title: string;
+  email: string;
   location: string;
   institution: string;
   degree: string;
   graduationYear: string;
   githubUrl: string;
-
-  // [OWNER TO CONFIRM]: Provisional facts / paths
   linkedinUrl: string;
   resumePath: string;
 
@@ -42,16 +41,13 @@ export const profile: ProfileData = {
   // CONFIRMED FACTS
   name: 'Ashlin Siddharth',
   title: 'Full Stack Developer',
+  email: 'ashlinsiddharth1@gmail.com',
   location: 'Bengaluru, India',
   institution: 'Presidency University, Bengaluru',
   degree: 'BCA - Data Science',
   graduationYear: '2027',
   githubUrl: 'https://github.com/ashlinsiddharth',
-
-  // [OWNER TO CONFIRM]: Provisional LinkedIn URL from initial requirements
   linkedinUrl: 'https://www.linkedin.com/in/ashlin-siddharth-191861165',
-
-  // [OWNER TO CONFIRM]: Target path for owner-provided resume PDF asset
   resumePath: '/resume.pdf',
 
   // [OWNER TO CONFIRM]: Provisional hero introduction text

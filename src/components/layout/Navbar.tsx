@@ -115,8 +115,9 @@ export const Navbar: React.FC = () => {
             href={profile.resumePath}
             target="_blank"
             rel="noopener noreferrer"
+            download
             className="gap-1.5"
-            aria-label="View Resume PDF"
+            aria-label="Download Resume PDF"
           >
             <FileDown className="h-3.5 w-3.5 text-brand-cyan" aria-hidden="true" />
             <span>Resume</span>
@@ -178,9 +179,10 @@ export const Navbar: React.FC = () => {
                 href={profile.resumePath}
                 target="_blank"
                 rel="noopener noreferrer"
+                download
                 className="w-full justify-center gap-2"
                 onClick={() => setIsOpen(false)}
-                aria-label="View Resume PDF"
+                aria-label="Download Resume PDF"
               >
                 <FileDown className="h-4 w-4 text-brand-cyan" aria-hidden="true" />
                 <span>Download Resume</span>
