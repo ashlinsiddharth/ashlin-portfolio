@@ -64,3 +64,25 @@ export interface Project {
   image?: string;
   links: ProjectLinks;
 }
+
+/**
+ * Professional Experience definitions for Phase 7
+ */
+export interface Experience {
+  title: string;
+  organisation: string;
+  dateRange: string;
+  type: string;
+  bullets: string[];
+}
+
+/**
+ * Contact definitions for Phase 7
+ */
+export interface ContactInfo {
+  email: string;
+  linkedinUrl: string;
+  githubUrl: string;
+  location: string;
+}
+
