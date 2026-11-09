@@ -58,11 +58,12 @@ export const Button: React.FC<ButtonProps> = ({
   }
 
   if (href) {
+    const computedRel = rel ?? (target === '_blank' ? 'noopener noreferrer' : undefined);
     return (
       <a
         href={href}
         target={target}
-        rel={rel}
+        rel={computedRel}
         download={download}
         className={combinedClasses}
         aria-disabled={disabled}
