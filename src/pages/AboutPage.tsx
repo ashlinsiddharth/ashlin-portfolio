@@ -5,6 +5,7 @@ import AboutBackground from '../components/about/AboutBackground';
 import AboutEducation from '../components/about/AboutEducation';
 import AboutInterests from '../components/about/AboutInterests';
 import AboutCareerGoal from '../components/about/AboutCareerGoal';
+import { Reveal } from '../components/ui/Reveal';
 import { aboutData } from '../data/about';
 
 export const AboutPage: React.FC = () => {
@@ -27,16 +28,24 @@ export const AboutPage: React.FC = () => {
       </div>
 
       {/* 1. Background Narrative & Portrait */}
-      <AboutBackground />
+      <Reveal delayMs={50}>
+        <AboutBackground />
+      </Reveal>
 
       {/* 2. Education Card */}
-      <AboutEducation />
+      <Reveal delayMs={100}>
+        <AboutEducation />
+      </Reveal>
 
       {/* 3. Interests Grid */}
-      <AboutInterests />
+      <Reveal delayMs={100}>
+        <AboutInterests />
+      </Reveal>
 
       {/* 4. Career Goal Card */}
-      <AboutCareerGoal />
+      <Reveal delayMs={100}>
+        <AboutCareerGoal />
+      </Reveal>
     </div>
   );
 };

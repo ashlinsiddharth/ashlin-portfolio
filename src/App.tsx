@@ -14,9 +14,6 @@ const ExperiencePage = lazy(() => import('./pages/ExperiencePage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
-// TEMPORARY: Design system preview route from Phase 2. Removed in Phase 8.
-const DesignSystemShowcase = lazy(() => import('./pages/DesignSystemShowcase'));
-
 export const App: React.FC = () => {
   return (
     <>
@@ -31,9 +28,6 @@ export const App: React.FC = () => {
             <Route path="/projects/:slug" element={<ProjectDetailPage />} />
             <Route path="/experience" element={<ExperiencePage />} />
             <Route path="/contact" element={<ContactPage />} />
-
-            {/* TEMPORARY: Unlinked design system verification showcase */}
-            <Route path="/design" element={<DesignSystemShowcase />} />
 
             {/* Catch-all 404 Route */}
             <Route path="*" element={<NotFoundPage />} />

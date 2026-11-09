@@ -12,6 +12,7 @@ import { SectionLabel } from '../components/ui/SectionLabel';
 import { GlassCard } from '../components/ui/GlassCard';
 import { Button } from '../components/ui/Button';
 import { Tag } from '../components/ui/Tag';
+import { Reveal } from '../components/ui/Reveal';
 import { experiences } from '../data/experience';
 import { profile } from '../data/profile';
 
@@ -114,79 +115,83 @@ export const ExperiencePage: React.FC = () => {
           </div>
         ) : (
           /* Empty State: Experience details coming soon */
-          <GlassCard
-            opacity="50"
-            className="p-8 sm:p-12 text-center border border-brand-cyan/20 bg-brand-card/40"
-          >
-            <div className="w-16 h-16 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan mx-auto mb-4 shadow-glow-cyan-sm">
-              <Briefcase className="h-8 w-8" aria-hidden="true" />
-            </div>
-            <h2 className="text-xl sm:text-2xl font-heading font-semibold text-text-primary tracking-tight mb-2">
-              Experience details coming soon
-            </h2>
-            <p className="text-text-muted text-sm sm:text-base max-w-lg mx-auto leading-relaxed mb-6">
-              I am currently compiling verified professional roles, internships, and project contributions. Confirmed entries will be displayed here shortly.
-            </p>
-            <Button variant="primary" to="/projects" size="sm">
-              Explore My Projects
-            </Button>
-          </GlassCard>
+          <Reveal delayMs={50}>
+            <GlassCard
+              opacity="50"
+              className="p-8 sm:p-12 text-center border border-brand-cyan/20 bg-brand-card/40"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan mx-auto mb-4 shadow-glow-cyan-sm">
+                <Briefcase className="h-8 w-8" aria-hidden="true" />
+              </div>
+              <h2 className="text-xl sm:text-2xl font-heading font-semibold text-text-primary tracking-tight mb-2">
+                Experience details coming soon
+              </h2>
+              <p className="text-text-muted text-sm sm:text-base max-w-lg mx-auto leading-relaxed mb-6">
+                I am currently compiling verified professional roles, internships, and project contributions. Confirmed entries will be displayed here shortly.
+              </p>
+              <Button variant="primary" to="/projects" size="sm">
+                Explore My Projects
+              </Button>
+            </GlassCard>
+          </Reveal>
         )}
       </div>
 
       {/* Confirmed Education Card */}
-      <div>
-        <h2 className="text-2xl font-heading font-bold text-text-primary tracking-tight mb-4 flex items-center gap-2.5">
-          <GraduationCap className="h-6 w-6 text-brand-cyan" aria-hidden="true" />
-          <span>Academic Background</span>
-        </h2>
+      <Reveal delayMs={100}>
+        <div>
+          <h2 className="text-2xl font-heading font-bold text-text-primary tracking-tight mb-4 flex items-center gap-2.5">
+            <GraduationCap className="h-6 w-6 text-brand-cyan" aria-hidden="true" />
+            <span>Academic Background</span>
+          </h2>
 
-        <GlassCard opacity="50" className="p-6 sm:p-8 border border-brand-cyan/20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Degree & Major */}
-            <div className="border-l-2 border-brand-cyan/40 pl-4">
-              <p className="text-xs uppercase tracking-wider text-text-muted font-mono mb-1">
-                Degree & Major
-              </p>
-              <h3 className="text-lg font-heading font-semibold text-text-primary">
-                {profile.degree}
-              </h3>
-              <p className="text-sm text-text-muted mt-1 flex items-center gap-1.5">
-                <School className="h-3.5 w-3.5 text-brand-cyan shrink-0" aria-hidden="true" />
-                <span>{profile.institution}</span>
-              </p>
-            </div>
+          <GlassCard opacity="50" className="p-6 sm:p-8 border border-brand-cyan/20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Degree & Major */}
+              <div className="border-l-2 border-brand-cyan/40 pl-4">
+                <p className="text-xs uppercase tracking-wider text-text-muted font-mono mb-1">
+                  Degree & Major
+                </p>
+                <h3 className="text-lg font-heading font-semibold text-text-primary">
+                  {profile.degree}
+                </h3>
+                <p className="text-sm text-text-muted mt-1 flex items-center gap-1.5">
+                  <School className="h-3.5 w-3.5 text-brand-cyan shrink-0" aria-hidden="true" />
+                  <span>{profile.institution}</span>
+                </p>
+              </div>
 
-            {/* Expected Graduation Year */}
-            <div className="border-l-2 border-brand-cyan/40 pl-4">
-              <p className="text-xs uppercase tracking-wider text-text-muted font-mono mb-1">
-                Expected Graduation
-              </p>
-              <h3 className="text-lg font-heading font-semibold text-brand-cyan">
-                {profile.graduationYear}
-              </h3>
-              <p className="text-sm text-text-muted mt-1 flex items-center gap-1.5">
-                <Calendar className="h-3.5 w-3.5 text-brand-cyan shrink-0" aria-hidden="true" />
-                <span>Graduating in {profile.graduationYear}</span>
-              </p>
-            </div>
+              {/* Expected Graduation Year */}
+              <div className="border-l-2 border-brand-cyan/40 pl-4">
+                <p className="text-xs uppercase tracking-wider text-text-muted font-mono mb-1">
+                  Expected Graduation
+                </p>
+                <h3 className="text-lg font-heading font-semibold text-brand-cyan">
+                  {profile.graduationYear}
+                </h3>
+                <p className="text-sm text-text-muted mt-1 flex items-center gap-1.5">
+                  <Calendar className="h-3.5 w-3.5 text-brand-cyan shrink-0" aria-hidden="true" />
+                  <span>Graduating in {profile.graduationYear}</span>
+                </p>
+              </div>
 
-            {/* Location */}
-            <div className="border-l-2 border-brand-cyan/40 pl-4 sm:col-span-2 lg:col-span-1">
-              <p className="text-xs uppercase tracking-wider text-text-muted font-mono mb-1">
-                Location
-              </p>
-              <h3 className="text-lg font-heading font-semibold text-text-primary">
-                {profile.location}
-              </h3>
-              <p className="text-sm text-text-muted mt-1 flex items-center gap-1.5">
-                <MapPin className="h-3.5 w-3.5 text-brand-cyan shrink-0" aria-hidden="true" />
-                <span>Bengaluru, India</span>
-              </p>
+              {/* Location */}
+              <div className="border-l-2 border-brand-cyan/40 pl-4 sm:col-span-2 lg:col-span-1">
+                <p className="text-xs uppercase tracking-wider text-text-muted font-mono mb-1">
+                  Location
+                </p>
+                <h3 className="text-lg font-heading font-semibold text-text-primary">
+                  {profile.location}
+                </h3>
+                <p className="text-sm text-text-muted mt-1 flex items-center gap-1.5">
+                  <MapPin className="h-3.5 w-3.5 text-brand-cyan shrink-0" aria-hidden="true" />
+                  <span>Bengaluru, India</span>
+                </p>
+              </div>
             </div>
-          </div>
-        </GlassCard>
-      </div>
+          </GlassCard>
+        </div>
+      </Reveal>
     </div>
   );
 };
