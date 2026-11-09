@@ -133,7 +133,7 @@ export const Navbar: React.FC = () => {
             aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isOpen}
             aria-controls="mobile-navigation-drawer"
-            className="p-2 rounded-md text-text-muted hover:text-text-primary hover:bg-brand-card/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan transition-colors"
+            className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md text-text-muted hover:text-text-primary hover:bg-brand-card/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan transition-colors"
           >
             {isOpen ? (
               <X className="h-6 w-6 text-brand-cyan" aria-hidden="true" />

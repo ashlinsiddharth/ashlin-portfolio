@@ -36,12 +36,12 @@ export const Footer: React.FC = () => {
           </nav>
 
           {/* Social Links (GitHub and LinkedIn only) */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <a
               href={profile.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full border border-brand-cyan/20 text-text-muted hover:text-brand-cyan hover:border-brand-cyan/60 hover:shadow-glow-cyan-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+              className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full border border-brand-cyan/20 text-text-muted hover:text-brand-cyan hover:border-brand-cyan/60 hover:shadow-glow-cyan-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
               aria-label="GitHub Profile (opens in a new tab)"
             >
               <Github className="h-4 w-4" aria-hidden="true" />
@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
               href={profile.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full border border-brand-cyan/20 text-text-muted hover:text-brand-cyan hover:border-brand-cyan/60 hover:shadow-glow-cyan-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+              className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full border border-brand-cyan/20 text-text-muted hover:text-brand-cyan hover:border-brand-cyan/60 hover:shadow-glow-cyan-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
               aria-label="LinkedIn Profile (opens in a new tab)"
             >
               <Linkedin className="h-4 w-4" aria-hidden="true" />

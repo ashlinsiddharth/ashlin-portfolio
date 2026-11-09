@@ -5,6 +5,7 @@ import { SectionLabel } from '../ui/SectionLabel';
 import { Tag } from '../ui/Tag';
 import { profile } from '../../data/profile';
 import portraitImg from '../../assets/portrait.png';
+import portraitWebp from '../../assets/portrait.webp';
 
 export const HeroSection: React.FC = () => {
   return (
@@ -77,19 +78,25 @@ export const HeroSection: React.FC = () => {
           {/* Cyan Ring with Soft Glow & Orbit Dot */}
           <div
             className="relative flex items-center justify-center w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[400px] lg:h-[400px] rounded-full border border-brand-cyan/50 shadow-glow-cyan"
-            aria-hidden="true"
           >
-            <span className="absolute top-10 left-6 sm:top-12 sm:left-8 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-brand-cyan shadow-[0_0_12px_#00D4FF]" />
+            <span
+              className="absolute top-10 left-6 sm:top-12 sm:left-8 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-brand-cyan shadow-[0_0_12px_#00D4FF]"
+              aria-hidden="true"
+            />
 
             {/* Ashlin Siddharth Cutout Portrait */}
-            <img
-              src={portraitImg}
-              alt="Portrait of Ashlin Siddharth"
-              width={380}
-              height={416}
-              loading="eager"
-              className="relative z-10 w-auto h-[260px] sm:h-[320px] lg:h-[380px] object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.6)]"
-            />
+            <picture className="relative z-10 flex items-center justify-center w-[240px] h-[260px] sm:w-[290px] sm:h-[320px] lg:w-[340px] lg:h-[380px]">
+              <source srcSet={portraitWebp} type="image/webp" />
+              <img
+                src={portraitImg}
+                alt="Portrait of Ashlin Siddharth"
+                width={380}
+                height={416}
+                loading="eager"
+                fetchPriority="high"
+                className="w-full h-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.6)]"
+              />
+            </picture>
           </div>
         </div>
       </div>

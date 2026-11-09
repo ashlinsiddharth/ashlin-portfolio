@@ -2,6 +2,7 @@ import React from 'react';
 import Seo from '../components/layout/Seo';
 import { SectionLabel } from '../components/ui/SectionLabel';
 import SkillCategoryCard from '../components/skills/SkillCategoryCard';
+import { Reveal } from '../components/ui/Reveal';
 import { skillsData } from '../data/skills';
 import type { SkillCategory } from '../types';
 
@@ -36,11 +37,12 @@ export const SkillsPage: React.FC = () => {
           if (categorySkills.length === 0) return null;
 
           return (
-            <SkillCategoryCard
-              key={category}
-              category={category}
-              skills={categorySkills}
-            />
+            <Reveal key={category} delayMs={50}>
+              <SkillCategoryCard
+                category={category}
+                skills={categorySkills}
+              />
+            </Reveal>
           );
         })}
       </div>

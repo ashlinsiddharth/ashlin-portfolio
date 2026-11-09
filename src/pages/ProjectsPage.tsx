@@ -3,6 +3,7 @@ import Seo from '../components/layout/Seo';
 import { SectionLabel } from '../components/ui/SectionLabel';
 import ProjectCard from '../components/projects/ProjectCard';
 import ProjectFilter from '../components/projects/ProjectFilter';
+import { Reveal } from '../components/ui/Reveal';
 import { projects } from '../data/projects';
 
 export const ProjectsPage: React.FC = () => {
@@ -53,7 +54,9 @@ export const ProjectsPage: React.FC = () => {
       {filteredProjects.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
           {filteredProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <Reveal key={project.slug} delayMs={50}>
+              <ProjectCard project={project} />
+            </Reveal>
           ))}
         </div>
       ) : (

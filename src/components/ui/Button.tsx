@@ -35,9 +35,9 @@ export const Button: React.FC<ButtonProps> = ({
   );
 
   const sizeStyles = {
-    sm: 'px-4 py-1.5 text-xs tracking-wide',
-    md: 'px-6 py-2.5 text-sm tracking-wide',
-    lg: 'px-8 py-3 text-base tracking-wide',
+    sm: 'min-h-[44px] sm:min-h-[38px] px-4 py-1.5 text-xs tracking-wide',
+    md: 'min-h-[44px] px-6 py-2.5 text-sm tracking-wide',
+    lg: 'min-h-[48px] px-8 py-3 text-base tracking-wide',
   }[size];
 
   const variantStyles = {

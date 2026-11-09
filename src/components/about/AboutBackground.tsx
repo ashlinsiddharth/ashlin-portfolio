@@ -4,6 +4,7 @@ import { GlassCard } from '../ui/GlassCard';
 import { Tag } from '../ui/Tag';
 import { aboutData } from '../../data/about';
 import portraitImg from '../../assets/portrait.png';
+import portraitWebp from '../../assets/portrait.webp';
 
 export const AboutBackground: React.FC = () => {
   return (
@@ -13,16 +14,18 @@ export const AboutBackground: React.FC = () => {
         <div className="flex-shrink-0 flex items-center justify-center">
           <div
             className="relative flex items-center justify-center w-48 h-48 sm:w-56 sm:h-56 rounded-full border border-brand-cyan/50 shadow-glow-cyan overflow-hidden bg-brand-card/30"
-            aria-hidden="true"
           >
-            <img
-              src={portraitImg}
-              alt="Portrait of Ashlin Siddharth"
-              width={224}
-              height={245}
-              loading="eager"
-              className="w-auto h-44 sm:h-52 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
-            />
+            <picture className="w-auto h-44 sm:h-52 flex items-center justify-center">
+              <source srcSet={portraitWebp} type="image/webp" />
+              <img
+                src={portraitImg}
+                alt="Portrait of Ashlin Siddharth"
+                width={224}
+                height={245}
+                loading="lazy"
+                className="w-auto h-44 sm:h-52 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+              />
+            </picture>
           </div>
         </div>
 

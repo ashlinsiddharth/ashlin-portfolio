@@ -90,7 +90,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className="px-6 pb-6 pt-2">
         <Link
           to={`/projects/${project.slug}`}
-          className="inline-flex items-center text-sm font-semibold text-brand-cyan hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded py-1"
+          className="min-h-[44px] inline-flex items-center text-sm font-semibold text-brand-cyan hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded py-1"
           aria-label={`View details of ${project.title}`}
         >
           <span>View Project Details</span>

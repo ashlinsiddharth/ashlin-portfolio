@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# [OWNER TO CONFIRM]: Uncomment and set verified production domain once active
+# Sitemap: https://[OWNER-TO-CONFIRM-SITE-URL]/sitemap.xml

@@ -26,7 +26,7 @@ export const ProjectFilter: React.FC<ProjectFilterProps> = ({
             type="button"
             aria-pressed={isActive}
             onClick={() => onSelectCategory(category)}
-            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded-full transition-all"
+            className="min-h-[44px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded-full transition-all"
           >
             <Tag
               active={isActive}
