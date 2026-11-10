@@ -24,12 +24,7 @@ export const FocusCards: React.FC = () => {
               className="p-6 flex flex-col justify-between"
             >
               <div>
-                <div
-                  className="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/25 flex items-center justify-center text-brand-cyan mb-4 shadow-glow-cyan-sm"
-                  aria-hidden="true"
-                >
-                  <IconComponent className="h-6 w-6" />
-                </div>
+                <IconComponent className="h-7 w-7 text-brand-cyan mb-4" aria-hidden="true" />
                 <h2 className="text-lg font-heading font-semibold text-text-primary tracking-tight mb-2">
                   {card.title}
                 </h2>

@@ -31,12 +31,7 @@ export const AboutInterests: React.FC = () => {
               opacity="50"
               className="p-5 flex flex-col items-center text-center justify-center transition-all duration-300"
             >
-              <div
-                className="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/25 flex items-center justify-center text-brand-cyan mb-3 shadow-glow-cyan-sm"
-                aria-hidden="true"
-              >
-                <IconComponent className="h-6 w-6" />
-              </div>
+              <IconComponent className="h-7 w-7 text-brand-cyan mb-3" aria-hidden="true" />
               <h3 className="text-sm font-heading font-semibold text-text-primary">
                 {interest.title}
               </h3>

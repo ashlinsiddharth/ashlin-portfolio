@@ -29,7 +29,8 @@ export default {
         },
       },
       borderRadius: {
-        card: '12px',
+        card: '18px',
+        'card-lg': '20px',
       },
       boxShadow: {
         'glow-cyan': '0 0 20px rgba(0, 212, 255, 0.35)',

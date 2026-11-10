@@ -17,16 +17,16 @@ export const GlassCard: React.FC<GlassCardProps> = ({
   ...props
 }) => {
   const opacityClass = {
-    '40': 'bg-brand-card/40',
-    '50': 'bg-brand-card/50',
-    '60': 'bg-brand-card/60',
+    '40': 'bg-[linear-gradient(135deg,rgba(0,212,255,0.06)_0%,rgba(15,42,77,0.5)_40%,rgba(15,42,77,0.35)_100%)]',
+    '50': 'bg-[linear-gradient(135deg,rgba(0,212,255,0.08)_0%,rgba(15,42,77,0.6)_40%,rgba(15,42,77,0.45)_100%)]',
+    '60': 'bg-[linear-gradient(135deg,rgba(0,212,255,0.10)_0%,rgba(15,42,77,0.7)_40%,rgba(15,42,77,0.55)_100%)]',
   }[opacity];
 
   const classes = twMerge(
     clsx(
-      'rounded-card border border-brand-cyan/20 backdrop-blur-md transition-all duration-300',
+      'rounded-card border border-brand-cyan/25 backdrop-blur-md transition-all duration-300',
       opacityClass,
-      hoverLift && 'hover:-translate-y-1 hover:border-brand-cyan/40 hover:shadow-glow-cyan cursor-pointer'
+      hoverLift && 'hover:-translate-y-1 hover:border-brand-cyan/50 hover:shadow-glow-cyan-sm cursor-pointer'
     ),
     className
   );

@@ -28,12 +28,7 @@ export const SkillCategoryCard: React.FC<SkillCategoryCardProps> = ({ category, 
     >
       <div>
         <div className="flex items-center gap-3 mb-5">
-          <div
-            className="w-11 h-11 rounded-xl bg-brand-cyan/10 border border-brand-cyan/25 flex items-center justify-center text-brand-cyan shrink-0 shadow-glow-cyan-sm"
-            aria-hidden="true"
-          >
-            <IconComponent className="h-5 w-5" />
-          </div>
+          <IconComponent className="h-6 w-6 text-brand-cyan shrink-0" aria-hidden="true" />
           <h2 className="text-lg sm:text-xl font-heading font-semibold text-text-primary tracking-tight">
             {category}
           </h2>
