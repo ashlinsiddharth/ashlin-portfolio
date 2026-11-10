@@ -11,7 +11,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative pt-4 sm:pt-8 lg:pt-12 pb-6 sm:pb-10 lg:pb-16"
+      className="relative pt-4 sm:pt-8 lg:pt-10 pb-2 sm:pb-4 lg:pb-0"
     >
       <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-12">
         {/* Left Column (Hero Content & CTAs) */}
@@ -102,17 +102,17 @@ export const HeroSection: React.FC = () => {
               />
             </svg>
 
-            {/* Ashlin Siddharth Cutout Portrait (head breaks above ring, torso extends down) */}
-            <picture className="relative z-10 flex items-end justify-center w-[260px] h-[320px] sm:w-[350px] sm:h-[430px] lg:w-[440px] lg:h-[530px] -mb-2 sm:-mb-4 lg:-mb-6">
+            {/* Ashlin Siddharth Cutout Portrait (head breaks above ring, torso extends down behind FocusCards) */}
+            <picture className="relative z-10 flex items-end justify-center w-[260px] h-[320px] sm:w-[350px] sm:h-[430px] lg:w-[460px] lg:h-[550px] lg:-mb-12">
               <source srcSet={portraitWebp} type="image/webp" />
               <img
                 src={portraitImg}
                 alt="Portrait of Ashlin Siddharth"
-                width={440}
-                height={530}
+                width={460}
+                height={550}
                 loading="eager"
                 fetchPriority="high"
-                className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.18)]"
+                className="w-full h-full object-contain object-bottom filter drop-shadow-[0_0_20px_rgba(0,212,255,0.18)] [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] lg:[mask-image:linear-gradient(to_bottom,black_92%,transparent_100%)]"
               />
             </picture>
           </div>

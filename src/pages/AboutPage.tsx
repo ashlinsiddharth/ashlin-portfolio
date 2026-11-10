@@ -44,7 +44,7 @@ export const AboutPage: React.FC = () => {
                   className="absolute bottom-6 inset-x-8 h-28 rounded-full bg-brand-cyan/15 blur-2xl pointer-events-none"
                   aria-hidden="true"
                 />
-                <picture className="relative z-10 flex items-end justify-center w-[220px] h-[280px] sm:w-[250px] sm:h-[310px]">
+                <picture className="relative z-10 flex items-end justify-center w-full h-[290px] sm:h-[320px]">
                   <source srcSet={portraitWebp} type="image/webp" />
                   <img
                     src={portraitImg}
@@ -52,7 +52,7 @@ export const AboutPage: React.FC = () => {
                     width={250}
                     height={310}
                     loading="lazy"
-                    className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(0,212,255,0.15)]"
+                    className="w-full h-full object-contain object-bottom filter drop-shadow-[0_0_15px_rgba(0,212,255,0.15)]"
                   />
                 </picture>
               </div>

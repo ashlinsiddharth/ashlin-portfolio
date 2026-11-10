@@ -100,6 +100,16 @@
    Suppresses non-essential transitions and animations when user requests
    reduced motion in system preferences.
    ========================================================================== */
+/* ==========================================================================
+   Programmatic Focus Cleanup
+   When route change shifts focus to h1 (tabIndex="-1") for screen readers,
+   suppress visual focus outline so no rectangular box appears around the heading.
+   ========================================================================== */
+h1[tabindex="-1"]:focus,
+main[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

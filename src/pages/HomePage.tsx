@@ -11,7 +11,7 @@ export const HomePage: React.FC = () => {
       <Seo title="Ashlin Siddharth | Full Stack Developer" />
       <HeroSection />
       {/* Focus cards sitting in front of portrait with higher z-index */}
-      <Reveal delayMs={100} className="relative z-20">
+      <Reveal delayMs={100} className="relative z-20 lg:-mt-6">
         <FocusCards />
       </Reveal>
       {/* Soft hairline divider between focus cards and About teaser */}
