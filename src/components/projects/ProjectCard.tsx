@@ -20,7 +20,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     >
       <div>
         {/* Project Visual / Midnight Blue Gradient Fallback */}
-        <div className="relative w-full h-44 bg-gradient-to-br from-brand-card/90 via-[#0a1b33] to-brand-dark flex items-center justify-center border-b border-brand-cyan/15 overflow-hidden">
+        <div className="relative w-full h-48 sm:h-52 bg-gradient-to-br from-brand-card/90 via-[#0a1b33] to-brand-dark flex items-center justify-center border-b border-brand-cyan/15 overflow-hidden">
           {project.image ? (
             <img
               src={project.image}
@@ -44,15 +44,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {/* Status Badge */}
           <div className="absolute top-3 right-3">
             <span
-              className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium tracking-wide border ${
+              className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-heading font-medium tracking-wide ${
                 isCompleted
-                  ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30'
-                  : 'bg-brand-cyan/15 text-brand-cyan border-brand-cyan/30'
+                  ? 'bg-brand-cyan text-brand-dark font-semibold shadow-glow-cyan-sm border border-brand-cyan'
+                  : 'bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/40'
               }`}
             >
               <span
                 className={`w-1.5 h-1.5 rounded-full mr-1.5 ${
-                  isCompleted ? 'bg-emerald-400' : 'bg-brand-cyan'
+                  isCompleted ? 'bg-brand-dark' : 'bg-brand-cyan animate-pulse'
                 }`}
                 aria-hidden="true"
               />

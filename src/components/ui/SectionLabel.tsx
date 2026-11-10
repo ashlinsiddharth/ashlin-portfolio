@@ -18,7 +18,7 @@ export const SectionLabel: React.FC<SectionLabelProps> = ({
   return (
     <div
       className={twMerge(
-        'inline-flex items-center gap-2 font-mono text-xs font-medium uppercase tracking-widest text-brand-cyan',
+        'inline-flex items-center gap-2 font-heading text-xs font-semibold uppercase tracking-wider text-brand-cyan',
         className
       )}
       {...props}

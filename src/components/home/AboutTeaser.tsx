@@ -1,25 +1,34 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, FolderGit2, GraduationCap } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { GlassCard } from '../ui/GlassCard';
 import { SectionLabel } from '../ui/SectionLabel';
 import { profile } from '../../data/profile';
+import { projects } from '../../data/projects';
 
 export const AboutTeaser: React.FC = () => {
-  // Filter only verified stats where confirmed === true
-  const confirmedStats = profile.stats.filter((item) => item.confirmed);
-
-  // Requirement: If fewer than 2 confirmed entries exist, do not render the panel at all
-  const shouldRenderStats = confirmedStats.length >= 2;
+  // Two factual derived stats: confirmed projects count from projects.ts and graduation year from profile.ts
+  const stats = [
+    {
+      value: String(projects.length),
+      label: 'Projects',
+      icon: FolderGit2,
+    },
+    {
+      value: profile.graduationYear,
+      label: 'Graduation Year',
+      icon: GraduationCap,
+    },
+  ];
 
   return (
     <section
       aria-labelledby="about-teaser-heading"
-      className="py-12 sm:py-16 lg:py-20 border-t border-brand-cyan/10"
+      className="py-10 sm:py-14 lg:py-18"
     >
-      <div className={`grid grid-cols-1 ${shouldRenderStats ? 'lg:grid-cols-12' : ''} gap-10 lg:gap-16 items-center`}>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
         {/* Left Column (About Teaser Narrative) */}
-        <div className={shouldRenderStats ? 'lg:col-span-7' : 'max-w-3xl'}>
+        <div className="lg:col-span-7">
           <SectionLabel text="ABOUT ME" className="mb-4" />
           <h2
             id="about-teaser-heading"
@@ -27,7 +36,7 @@ export const AboutTeaser: React.FC = () => {
           >
             {profile.aboutTeaser.heading}
           </h2>
-          <p className="text-text-muted text-base sm:text-lg leading-relaxed mb-8">
+          <p className="text-text-muted text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
             {profile.aboutTeaser.paragraph}
           </p>
           <div>
@@ -38,33 +47,32 @@ export const AboutTeaser: React.FC = () => {
           </div>
         </div>
 
-        {/* 
-          STATS PANEL DATA INTEGRITY & SUPPRESSION RULE:
-          The stats panel is designed as a GlassCard that renders ONLY entries where 'confirmed' is true.
-          Per project requirements: "If fewer than 2 confirmed entries exist, do not render the panel at all 
-          and leave a code comment explaining why."
-          Currently, only 1 confirmed entry exists: ('2027 / Graduation Year').
-          Unconfirmed metrics (e.g. project counts, leadership roles, tech domains) must not be invented.
-          Consequently, 'shouldRenderStats' evaluates to false, and the stats panel below is intentionally omitted.
-        */}
-        {shouldRenderStats && (
-          <div className="lg:col-span-5">
-            <GlassCard opacity="50" className="p-8">
-              <div className="grid grid-cols-2 gap-6">
-                {confirmedStats.map((stat) => (
-                  <div key={stat.label} className="border-l-2 border-brand-cyan/40 pl-4">
-                    <div className="text-3xl font-heading font-bold text-brand-cyan">
+        {/* Right Column (Reference 2-Cell Stats Glass Panel) */}
+        <div className="lg:col-span-5">
+          <GlassCard opacity="50" className="p-6 sm:p-8">
+            <div className="grid grid-cols-2 divide-x divide-brand-cyan/20">
+              {stats.map((stat, idx) => {
+                const IconComponent = stat.icon;
+                return (
+                  <div
+                    key={stat.label}
+                    className={`flex flex-col justify-center ${
+                      idx === 0 ? 'pr-4 sm:pr-6' : 'pl-4 sm:pl-6'
+                    }`}
+                  >
+                    <IconComponent className="h-6 w-6 text-brand-cyan mb-3" aria-hidden="true" />
+                    <div className="text-3xl sm:text-4xl font-heading font-bold text-white tracking-tight">
                       {stat.value}
                     </div>
-                    <div className="text-xs uppercase tracking-wider text-text-muted mt-1 font-mono">
+                    <div className="text-xs uppercase tracking-wider text-text-muted mt-1 font-heading font-medium">
                       {stat.label}
                     </div>
                   </div>
-                ))}
-              </div>
-            </GlassCard>
-          </div>
-        )}
+                );
+              })}
+            </div>
+          </GlassCard>
+        </div>
       </div>
     </section>
   );

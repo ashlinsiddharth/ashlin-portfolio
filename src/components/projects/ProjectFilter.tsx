@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tag } from '../ui/Tag';
 
 export interface ProjectFilterProps {
   categories: string[];
@@ -16,7 +15,7 @@ export const ProjectFilter: React.FC<ProjectFilterProps> = ({
     <div
       role="group"
       aria-label="Filter projects by category"
-      className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-8"
+      className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-8"
     >
       {categories.map((category) => {
         const isActive = activeCategory === category;
@@ -26,18 +25,13 @@ export const ProjectFilter: React.FC<ProjectFilterProps> = ({
             type="button"
             aria-pressed={isActive}
             onClick={() => onSelectCategory(category)}
-            className="min-h-[44px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded-full transition-all"
+            className={`min-h-[44px] px-5 py-2 rounded-full text-xs font-heading font-medium tracking-wide transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan ${
+              isActive
+                ? 'bg-brand-cyan text-[#0A192F] font-semibold shadow-glow-cyan-sm border border-brand-cyan'
+                : 'bg-transparent border border-brand-cyan/30 text-text-muted hover:text-white hover:border-brand-cyan/60 hover:bg-brand-card/40'
+            }`}
           >
-            <Tag
-              active={isActive}
-              className={`cursor-pointer transition-all duration-200 py-1.5 px-4 text-xs font-mono tracking-wider ${
-                isActive
-                  ? 'bg-brand-cyan text-brand-dark shadow-glow-cyan-sm font-semibold'
-                  : 'bg-brand-card/50 text-text-muted hover:text-text-primary hover:border-brand-cyan/50'
-              }`}
-            >
-              {category}
-            </Tag>
+            {category}
           </button>
         );
       })}
@@ -46,4 +40,3 @@ export const ProjectFilter: React.FC<ProjectFilterProps> = ({
 };
 
 export default ProjectFilter;
-

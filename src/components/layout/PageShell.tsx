@@ -29,7 +29,7 @@ export const PageShell: React.FC<PageShellProps> = ({ children }) => {
       <main
         id="main-content"
         tabIndex={-1}
-        className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 outline-none"
+        className="flex-1 w-full max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 outline-none"
       >
         {children}
       </main>

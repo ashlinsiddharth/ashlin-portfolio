@@ -52,18 +52,11 @@
 }
 
 /* ==========================================================================
-   4. BACKGROUND ARCHITECTURE & SLOT FOR src/assets/background.webp
-   The site uses a fixed full-screen midnight-blue atmospheric gradient
-   with a dark vignette overlay.
-   SLOT SPECIFICATION:
-   When 'src/assets/background.webp' is supplied by the owner, set:
-   --bg-slot-image: url('../assets/background.webp');
-   The layout is fully verified and visually complete without an image.
+   4. CINEMATIC BACKGROUND SYSTEM
+   Fixed, hardware-accelerated midnight blue atmospheric backdrop.
+   Layered: Scenery WebP -> Radial cyan/blue glows -> Linear depth gradient.
+   Responsive: Desktop (>768px) and Mobile (<=767px).
    ========================================================================== */
-:root {
-  --bg-slot-image: none;
-}
-
 .cinematic-bg {
   position: fixed;
   inset: 0;
@@ -73,19 +66,33 @@
   pointer-events: none;
   background-color: #0A192F;
   background-image: 
-    var(--bg-slot-image),
+    url('../assets/background-desktop.webp'),
     radial-gradient(ellipse 90% 60% at 50% -10%, rgba(0, 212, 255, 0.12), transparent 70%),
     radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.14), transparent 45%),
     linear-gradient(to bottom, #0A192F 0%, #06101E 100%);
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center bottom;
   background-size: cover;
+}
+
+@media (max-width: 767px) {
+  .cinematic-bg {
+    background-image: 
+      url('../assets/background-mobile.webp'),
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(0, 212, 255, 0.12), transparent 70%),
+      radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.14), transparent 45%),
+      linear-gradient(to bottom, #0A192F 0%, #06101E 100%);
+    background-position: center bottom;
+    background-size: cover;
+  }
 }
 
 .cinematic-bg-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(5, 13, 26, 0.75) 100%);
+  background: 
+    linear-gradient(to right, rgba(5, 13, 26, 0.55) 0%, rgba(5, 13, 26, 0.3) 40%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(5, 13, 26, 0.6) 100%);
 }
 
 /* ==========================================================================
@@ -93,6 +100,16 @@
    Suppresses non-essential transitions and animations when user requests
    reduced motion in system preferences.
    ========================================================================== */
+/* ==========================================================================
+   Programmatic Focus Cleanup
+   When route change shifts focus to h1 (tabIndex="-1") for screen readers,
+   suppress visual focus outline so no rectangular box appears around the heading.
+   ========================================================================== */
+h1[tabindex="-1"]:focus,
+main[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

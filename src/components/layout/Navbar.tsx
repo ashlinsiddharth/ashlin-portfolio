@@ -3,7 +3,6 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, FileDown } from 'lucide-react';
 import { navItems } from '../../data/navigation';
 import { profile } from '../../data/profile';
-import Button from '../ui/Button';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,56 +71,64 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-brand-dark/70 border-b border-brand-cyan/20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand Logo */}
+    <header className="sticky top-3 sm:top-4 z-40 w-full px-4 sm:px-6 lg:px-8 pointer-events-none">
+      <div className="pointer-events-auto max-w-[1340px] mx-auto h-16 px-4 sm:px-6 flex items-center justify-between rounded-[20px] bg-brand-card/70 backdrop-blur-xl border border-brand-cyan/30 shadow-[0_4px_24px_rgba(0,212,255,0.08)]">
+        {/* Brand Logo: bare large cyan "A." with name in white */}
         <Link
           to="/"
-          className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded-md"
+          className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded-lg"
           aria-label="Ashlin Siddharth Home"
         >
-          <span className="h-7 w-7 rounded-md bg-brand-cyan text-brand-dark font-heading font-bold text-sm flex items-center justify-center shadow-glow-cyan-sm group-hover:scale-105 transition-transform">
+          <span className="text-brand-cyan font-heading font-bold text-2xl tracking-tighter group-hover:scale-105 transition-transform">
             A.
           </span>
-          <span className="font-heading font-bold text-base sm:text-lg text-text-primary tracking-tight">
+          <span className="font-heading font-bold text-base sm:text-lg text-white tracking-tight">
             {profile.name}
           </span>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Main Navigation">
+        <nav className="hidden md:flex items-center gap-2 lg:gap-3" aria-label="Main Navigation">
           {navItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `px-3 py-1.5 text-sm font-sans font-medium transition-all duration-200 border-b-2 rounded-t-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan ${
+                `relative px-3 py-2 text-sm font-sans font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded-md ${
                   isActive
-                    ? 'text-text-primary border-brand-cyan shadow-glow-cyan-sm'
-                    : 'text-text-muted border-transparent hover:text-text-primary hover:border-brand-cyan/40'
+                    ? 'text-brand-cyan'
+                    : 'text-text-muted hover:text-white'
                 }`
               }
             >
-              {item.label}
+              {({ isActive }) => (
+                <>
+                  <span>{item.label}</span>
+                  {isActive && (
+                    <span
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 rounded-full bg-brand-cyan shadow-glow-cyan-sm"
+                      aria-hidden="true"
+                    />
+                  )}
+                </>
+              )}
             </NavLink>
           ))}
         </nav>
 
-        {/* Desktop Action: Resume Button */}
+        {/* Desktop Action: Resume Button (cyan outline pill with download icon) */}
         <div className="hidden md:flex items-center gap-3">
-          <Button
-            variant="secondary"
-            size="sm"
+          <a
             href={profile.resumePath}
             target="_blank"
             rel="noopener noreferrer"
             download
-            className="gap-1.5"
+            className="min-h-[38px] px-4 py-1.5 rounded-full border border-brand-cyan/60 text-brand-cyan hover:bg-brand-cyan/10 hover:border-brand-cyan transition-all text-xs sm:text-sm font-semibold inline-flex items-center gap-1.5 shadow-glow-cyan-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
             aria-label="Download Resume PDF"
           >
             <FileDown className="h-3.5 w-3.5 text-brand-cyan" aria-hidden="true" />
             <span>Resume</span>
-          </Button>
+          </a>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -133,7 +140,7 @@ export const Navbar: React.FC = () => {
             aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isOpen}
             aria-controls="mobile-navigation-drawer"
-            className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md text-text-muted hover:text-text-primary hover:bg-brand-card/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan transition-colors"
+            className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-text-muted hover:text-white hover:bg-brand-card/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan transition-colors"
           >
             {isOpen ? (
               <X className="h-6 w-6 text-brand-cyan" aria-hidden="true" />
@@ -144,7 +151,7 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile Navigation Drawer: styled to match pill */}
       {isOpen && (
         <div
           id="mobile-navigation-drawer"
@@ -152,19 +159,19 @@ export const Navbar: React.FC = () => {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="md:hidden fixed inset-x-0 top-16 bg-brand-dark/95 backdrop-blur-xl border-b border-brand-cyan/30 shadow-2xl py-6 px-6 transition-all duration-300"
+          className="md:hidden mt-2 p-5 rounded-[20px] bg-brand-card/95 backdrop-blur-2xl border border-brand-cyan/30 shadow-2xl transition-all duration-300 pointer-events-auto max-w-[1340px] mx-auto"
         >
-          <nav className="flex flex-col gap-3" aria-label="Mobile Navigation Links">
+          <nav className="flex flex-col gap-2.5" aria-label="Mobile Navigation Links">
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
-                  `px-4 py-2.5 rounded-lg text-base font-sans font-medium transition-all ${
+                  `px-4 py-2.5 rounded-xl text-base font-sans font-medium transition-all ${
                     isActive
-                      ? 'bg-brand-card/70 text-text-primary border-l-4 border-brand-cyan shadow-glow-cyan-sm'
-                      : 'text-text-muted hover:text-text-primary hover:bg-brand-card/40'
+                      ? 'bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/40 shadow-glow-cyan-sm'
+                      : 'text-text-muted hover:text-white hover:bg-brand-card/40'
                   }`
                 }
               >
@@ -172,21 +179,19 @@ export const Navbar: React.FC = () => {
               </NavLink>
             ))}
 
-            <div className="pt-4 border-t border-brand-border mt-2">
-              <Button
-                variant="secondary"
-                size="md"
+            <div className="pt-3 border-t border-brand-cyan/20 mt-2">
+              <a
                 href={profile.resumePath}
                 target="_blank"
                 rel="noopener noreferrer"
                 download
-                className="w-full justify-center gap-2"
+                className="w-full min-h-[44px] justify-center px-4 py-2.5 rounded-full border border-brand-cyan/60 text-brand-cyan hover:bg-brand-cyan/10 hover:border-brand-cyan transition-all text-sm font-semibold inline-flex items-center gap-2 shadow-glow-cyan-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
                 onClick={() => setIsOpen(false)}
                 aria-label="Download Resume PDF"
               >
                 <FileDown className="h-4 w-4 text-brand-cyan" aria-hidden="true" />
                 <span>Download Resume</span>
-              </Button>
+              </a>
             </div>
           </nav>
         </div>
