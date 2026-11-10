@@ -6,6 +6,8 @@ import { Tag } from '../ui/Tag';
 import { profile } from '../../data/profile';
 import portraitImg from '../../assets/portrait.png';
 import portraitWebp from '../../assets/portrait.webp';
+import portrait480Webp from '../../assets/portrait-480.webp';
+import portrait720Webp from '../../assets/portrait-720.webp';
 
 export const HeroSection: React.FC = () => {
   return (
@@ -104,7 +106,11 @@ export const HeroSection: React.FC = () => {
 
             {/* Ashlin Siddharth Cutout Portrait (head breaks above ring, torso extends down behind FocusCards) */}
             <picture className="relative z-10 flex items-end justify-center w-[260px] h-[320px] sm:w-[350px] sm:h-[430px] lg:w-[460px] lg:h-[550px] lg:-mb-12">
-              <source srcSet={portraitWebp} type="image/webp" />
+              <source
+                type="image/webp"
+                srcSet={`${portrait480Webp} 480w, ${portrait720Webp} 720w, ${portraitWebp} 1199w`}
+                sizes="(min-width: 1024px) 460px, (min-width: 640px) 350px, 260px"
+              />
               <img
                 src={portraitImg}
                 alt="Portrait of Ashlin Siddharth"

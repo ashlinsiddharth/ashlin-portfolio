@@ -5,7 +5,7 @@ import ScrollToTop from './components/layout/ScrollToTop';
 import SuspenseFallback from './components/layout/SuspenseFallback';
 
 // Lazy-loaded route components
-const HomePage = lazy(() => import('./pages/HomePage'));
+import HomePage from './pages/HomePage';
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const SkillsPage = lazy(() => import('./pages/SkillsPage'));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));

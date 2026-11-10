@@ -9,6 +9,8 @@ import { Reveal } from '../components/ui/Reveal';
 import { aboutData } from '../data/about';
 import portraitImg from '../assets/portrait.png';
 import portraitWebp from '../assets/portrait.webp';
+import portrait480Webp from '../assets/portrait-480.webp';
+import portrait720Webp from '../assets/portrait-720.webp';
 
 export const AboutPage: React.FC = () => {
   return (
@@ -45,7 +47,11 @@ export const AboutPage: React.FC = () => {
                   aria-hidden="true"
                 />
                 <picture className="relative z-10 flex items-end justify-center w-full h-[290px] sm:h-[320px]">
-                  <source srcSet={portraitWebp} type="image/webp" />
+                  <source
+                    type="image/webp"
+                    srcSet={`${portrait480Webp} 480w, ${portrait720Webp} 720w, ${portraitWebp} 1199w`}
+                    sizes="(min-width: 1024px) 460px, (min-width: 640px) 350px, 260px"
+                  />
                   <img
                     src={portraitImg}
                     alt="Portrait of Ashlin Siddharth"
