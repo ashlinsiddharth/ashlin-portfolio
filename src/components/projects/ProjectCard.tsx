@@ -20,7 +20,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     >
       <div>
         {/* Project Visual / Midnight Blue Gradient Fallback */}
-        <div className="relative w-full h-44 bg-gradient-to-br from-brand-card/90 via-[#0a1b33] to-brand-dark flex items-center justify-center border-b border-brand-cyan/15 overflow-hidden">
+        <div className="relative w-full h-48 sm:h-52 bg-gradient-to-br from-brand-card/90 via-[#0a1b33] to-brand-dark flex items-center justify-center border-b border-brand-cyan/15 overflow-hidden">
           {project.image ? (
             <img
               src={project.image}

@@ -6,13 +6,8 @@ import { aboutData } from '../../data/about';
 export const AboutCareerGoal: React.FC = () => {
   return (
     <GlassCard opacity="50" className="p-6 sm:p-8">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-6">
-        <div
-          className="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/25 flex items-center justify-center text-brand-cyan shrink-0 shadow-glow-cyan-sm"
-          aria-hidden="true"
-        >
-          <Target className="h-6 w-6" />
-        </div>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+        <Target className="h-8 w-8 text-brand-cyan shrink-0" aria-hidden="true" />
         <div>
           <h2 className="text-xl font-heading font-semibold text-text-primary tracking-tight mb-2">
             Career Goal
@@ -27,4 +22,3 @@ export const AboutCareerGoal: React.FC = () => {
 };
 
 export default AboutCareerGoal;
-

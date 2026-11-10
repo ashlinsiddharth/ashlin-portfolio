@@ -46,6 +46,11 @@ export const SkillsPage: React.FC = () => {
           );
         })}
       </div>
+
+      {/* Trademark Attribution Line */}
+      <div className="mt-12 text-center text-xs text-text-muted/70 font-sans">
+        <p>Logos are trademarks of their respective owners.</p>
+      </div>
     </div>
   );
 };
