@@ -11,11 +11,11 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative pt-6 sm:pt-10 lg:pt-16 pb-12 sm:pb-16 lg:pb-24"
+      className="relative pt-4 sm:pt-8 lg:pt-12 pb-6 sm:pb-10 lg:pb-16"
     >
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-14">
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-12">
         {/* Left Column (Hero Content & CTAs) */}
-        <div className="flex-1 text-center lg:text-left">
+        <div className="flex-1 text-center lg:text-left z-10">
           <SectionLabel text="HELLO, I'M" className="mb-4 justify-center lg:justify-start" />
           <h1
             id="hero-heading"
@@ -64,37 +64,55 @@ export const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column (Portrait + Glowing Cyan Orbital Ring + Decorative Moon) */}
-        <div className="relative flex-shrink-0 flex items-center justify-center">
-          {/* Decorative Moon (Desktop Only, aria-hidden="true") */}
-          <div
-            className="hidden lg:block absolute -top-10 -left-10 w-28 h-28 rounded-full bg-gradient-to-tr from-cyan-100/90 via-sky-50 to-blue-200/90 shadow-[0_0_50px_rgba(0,212,255,0.45),0_0_20px_rgba(255,255,255,0.7)] pointer-events-none select-none z-0"
-            aria-hidden="true"
-          >
-            {/* Crater-like atmospheric gradient */}
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_35%_35%,rgba(140,180,220,0.35)_0%,transparent_45%),radial-gradient(circle_at_65%_65%,rgba(120,160,200,0.3)_0%,transparent_50%)]" />
-          </div>
-
-          {/* Cyan Ring with Soft Glow & Orbit Dot */}
-          <div
-            className="relative flex items-center justify-center w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[400px] lg:h-[400px] rounded-full border border-brand-cyan/50 shadow-glow-cyan"
-          >
-            <span
-              className="absolute top-10 left-6 sm:top-12 sm:left-8 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-brand-cyan shadow-[0_0_12px_#00D4FF]"
+        {/* Right Column (Portrait + Glowing Cyan Orbital Open Arc) */}
+        <div className="relative flex-shrink-0 flex items-center justify-center z-10">
+          <div className="relative flex items-center justify-center w-[280px] h-[300px] sm:w-[380px] sm:h-[400px] lg:w-[480px] lg:h-[500px]">
+            {/* Cyan Open Arc with Orbit Dot (aria-hidden="true") */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none select-none"
+              viewBox="0 0 500 500"
+              fill="none"
               aria-hidden="true"
-            />
+            >
+              <defs>
+                <filter id="arc-glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              {/* Glowing Open Arc: covers top & right with gap at lower-left */}
+              <path
+                d="M 70 140 A 215 215 0 1 1 110 400"
+                stroke="#00D4FF"
+                strokeWidth="2.5"
+                strokeOpacity="0.75"
+                strokeLinecap="round"
+                filter="url(#arc-glow)"
+              />
+              {/* Orbit Dot at upper-left end of the arc */}
+              <circle
+                cx="70"
+                cy="140"
+                r="5.5"
+                fill="#00D4FF"
+                filter="url(#arc-glow)"
+              />
+            </svg>
 
-            {/* Ashlin Siddharth Cutout Portrait */}
-            <picture className="relative z-10 flex items-center justify-center w-[240px] h-[260px] sm:w-[290px] sm:h-[320px] lg:w-[340px] lg:h-[380px]">
+            {/* Ashlin Siddharth Cutout Portrait (head breaks above ring, torso extends down) */}
+            <picture className="relative z-10 flex items-end justify-center w-[260px] h-[320px] sm:w-[350px] sm:h-[430px] lg:w-[440px] lg:h-[530px] -mb-2 sm:-mb-4 lg:-mb-6">
               <source srcSet={portraitWebp} type="image/webp" />
               <img
                 src={portraitImg}
                 alt="Portrait of Ashlin Siddharth"
-                width={380}
-                height={416}
+                width={440}
+                height={530}
                 loading="eager"
                 fetchPriority="high"
-                className="w-full h-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.6)]"
+                className="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(0,212,255,0.18)]"
               />
             </picture>
           </div>
