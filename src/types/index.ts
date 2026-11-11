@@ -86,3 +86,15 @@ export interface ContactInfo {
   location: string;
 }
 
+/**
+ * Certificate definitions
+ */
+export interface Certificate {
+  slug: string;
+  title: string;
+  issuer: string;
+  issueDateISO: string;
+  issueDateDisplay: string;
+  pdfPath: string;
+}
+

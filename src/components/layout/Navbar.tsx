@@ -76,7 +76,7 @@ export const Navbar: React.FC = () => {
         {/* Brand Logo: bare large cyan "A." with name in white */}
         <Link
           to="/"
-          className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded-lg"
+          className="shrink-0 whitespace-nowrap flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded-lg"
           aria-label="Ashlin Siddharth Home"
         >
           <span className="text-brand-cyan font-heading font-bold text-2xl tracking-tighter group-hover:scale-105 transition-transform">
@@ -88,13 +88,14 @@ export const Navbar: React.FC = () => {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-2 lg:gap-3" aria-label="Main Navigation">
+        <nav className="hidden lg:flex items-center lg:gap-1.5 xl:gap-3" aria-label="Main Navigation">
           {navItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
+              end={item.path === '/'}
               className={({ isActive }) =>
-                `relative px-3 py-2 text-sm font-sans font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded-md ${
+                `relative lg:px-2.5 xl:px-3 py-2 whitespace-nowrap text-sm font-sans font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan rounded-md ${
                   isActive
                     ? 'text-brand-cyan'
                     : 'text-text-muted hover:text-white'
@@ -117,13 +118,13 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Desktop Action: Resume Button (cyan outline pill with download icon) */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
           <a
             href={profile.resumePath}
             target="_blank"
             rel="noopener noreferrer"
             download
-            className="min-h-[38px] px-4 py-1.5 rounded-full border border-brand-cyan/60 text-brand-cyan hover:bg-brand-cyan/10 hover:border-brand-cyan transition-all text-xs sm:text-sm font-semibold inline-flex items-center gap-1.5 shadow-glow-cyan-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+            className="whitespace-nowrap min-h-[38px] px-4 py-1.5 rounded-full border border-brand-cyan/60 text-brand-cyan hover:bg-brand-cyan/10 hover:border-brand-cyan transition-all text-xs sm:text-sm font-semibold inline-flex items-center gap-1.5 shadow-glow-cyan-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
             aria-label="Download Resume PDF"
           >
             <FileDown className="h-3.5 w-3.5 text-brand-cyan" aria-hidden="true" />
@@ -132,7 +133,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Hamburger Button */}
-        <div className="flex md:hidden items-center">
+        <div className="flex lg:hidden items-center">
           <button
             ref={toggleButtonRef}
             type="button"
@@ -159,13 +160,14 @@ export const Navbar: React.FC = () => {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="md:hidden mt-2 p-5 rounded-[20px] bg-brand-card/95 backdrop-blur-2xl border border-brand-cyan/30 shadow-2xl transition-all duration-300 pointer-events-auto max-w-[1340px] mx-auto"
+          className="lg:hidden mt-2 p-5 rounded-[20px] bg-brand-card/95 backdrop-blur-2xl border border-brand-cyan/30 shadow-2xl transition-all duration-300 pointer-events-auto max-w-[1340px] mx-auto"
         >
           <nav className="flex flex-col gap-2.5" aria-label="Mobile Navigation Links">
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
+                end={item.path === '/'}
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
                   `px-4 py-2.5 rounded-xl text-base font-sans font-medium transition-all ${
