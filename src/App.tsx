@@ -11,6 +11,8 @@ const SkillsPage = lazy(() => import('./pages/SkillsPage'));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
 const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage'));
 const ExperiencePage = lazy(() => import('./pages/ExperiencePage'));
+const CertificatesPage = lazy(() => import('./pages/CertificatesPage'));
+const CertificateViewerPage = lazy(() => import('./pages/CertificateViewerPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
@@ -27,6 +29,8 @@ export const App: React.FC = () => {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/projects/:slug" element={<ProjectDetailPage />} />
             <Route path="/experience" element={<ExperiencePage />} />
+            <Route path="/certificates" element={<CertificatesPage />} />
+            <Route path="/certificates/:slug" element={<CertificateViewerPage />} />
             <Route path="/contact" element={<ContactPage />} />
 
             {/* Catch-all 404 Route */}
